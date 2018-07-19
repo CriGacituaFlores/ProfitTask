@@ -5,19 +5,15 @@ require "test/unit"
 class TestPortfolio < Test::Unit::TestCase
 
   def test_simple
-    firstStockPrice = [
-      {"date" => "2015-01-01", "val" => 10000},
-      {"date" => "2016-01-01", "val" => 9000},
-      {"date" => "2017-01-01", "val" => 13500},
-      {"date" => "2018-01-01", "val" => 12000},
-    ]
+    firstStockPrice = [{"date" => "2015-01-01", "val" => 10000},
+                      {"date" => "2016-01-01", "val" => 9000},
+                      {"date" => "2017-01-01", "val" => 13500},
+                      {"date" => "2018-01-01", "val" => 12000}]
 
-    secondStockPrice = [
-      {"date" => "2015-01-01", "val" => 45000},
-      {"date" => "2016-01-01", "val" => 40000},
-      {"date" => "2017-01-01", "val" => 85000},
-      {"date" => "2018-01-01", "val" => 80000},
-    ]
+    secondStockPrice = [{"date" => "2015-01-01", "val" => 45000},
+                        {"date" => "2016-01-01", "val" => 40000},
+                        {"date" => "2017-01-01", "val" => 85000},
+                        {"date" => "2018-01-01", "val" => 80000}]
 
     firstStock = Stock.new(firstStockPrice)
     secondStock = Stock.new(secondStockPrice)
