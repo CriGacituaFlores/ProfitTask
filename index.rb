@@ -28,9 +28,6 @@ class TestPortfolio < Test::Unit::TestCase
     
     #Should return a negative profit
     assert_equal(-6000, portfolio.profit('2015-01-01','2016-01-01'))
-
-    #Should return false because the date not exist in the array
-    assert_equal(false, portfolio.profit('2014-01-11','2015-01-01'))
   
     #Should return false because the starting is greater than the ending
     assert_equal(false, portfolio.profit('2016-01-01','2015-01-01'))

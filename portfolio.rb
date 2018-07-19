@@ -35,8 +35,8 @@ class Portfolio
       dateStart = Date.parse(initial_date)
       endStart = Date.parse(final_date)
       quantityYears = ((endStart - dateStart) / 365).round
-      annualizedResult = ((totalFinishPrice.to_f / totalBeginningPrice.to_f) ** (1.to_f/quantityYears.to_f).to_f) -1
-      return (annualizedResult * 100).round(1)
+      annualizedFinalResult = ((totalFinishPrice.to_f / totalBeginningPrice.to_f) ** (1.to_f/quantityYears.to_f).to_f) -1
+      return (annualizedFinalResult * 100).round(1)
     end
 
     return profit
