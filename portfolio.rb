@@ -5,10 +5,10 @@ class Portfolio
     @stocks = stocks
   end
 
-  def profit(start_date, end_date, annualized = false)
+  def profit(initial_date, final_date, isAnnualized = false)
     profit = 0
 
-    if(Date.parse(start_date) > Date.parse(end_date))
+    if(Date.parse(initial_date) > Date.parse(final_date))
       puts "La fecha inicial no puede ser mayor a la fecha final"
       return false
     end
@@ -16,12 +16,12 @@ class Portfolio
     totalStartPrice = 0
     totalEndPrice = 0
 
-    @stocks.each do |profit|
-      startPrice = profit.price(start_date)
-      endPrice = profit.price(end_date)
-      
+    @stocks.each do |stock|
+      startPrice = stock.price(initial_date)
+      endPrice = stock.price(final_date)
+
       if(startPrice != false && endPrice != false)
-        profit = endPrice - startPrice
+        profit += endPrice - startPrice
       else
         return false
       end
@@ -29,15 +29,18 @@ class Portfolio
       totalStartPrice += startPrice
       totalEndPrice += endPrice
 
-      puts totalStartPrice
-      puts totalEndPrice
      
     end
 
-    if annualized
-      dateStart = Date.parse(start_date)
-      endStart = Date.parse(end_date)
+    if isAnnualized
+      dateStart = Date.parse(initial_date)
+      endStart = Date.parse(final_date)
+      years = ((endStart - dateStart) / 365).round
+      annualizedResult = ((totalEndPrice.to_f / totalStartPrice.to_f) ** (1.to_f/years.to_f).to_f) -1
+      return (annualizedResult * 100).round(1)
     end
+
+    return profit
   end
 
 end
